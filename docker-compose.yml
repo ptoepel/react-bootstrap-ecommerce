@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  react-bootstrap-ecommerce:
+    image: node:22
+    container_name: react-bootstrap-ecommerce
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "npm install --silent && npm run dev -- --host 0.0.0.0"
+    networks:
+      - proxy-network
+
+networks:
+  proxy-network:
+    external: true
