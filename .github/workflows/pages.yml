@@ -24,11 +24,12 @@ jobs:
           node-version: '20'
           cache: yarn
       - uses: actions/configure-pages@v5
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --network-timeout 600000
       - run: yarn build
         env:
           PUBLIC_URL: /react-bootstrap-ecommerce
           CI: false
+          NODE_OPTIONS: --openssl-legacy-provider
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
